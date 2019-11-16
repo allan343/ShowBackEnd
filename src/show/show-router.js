@@ -23,7 +23,7 @@ showsRouter
     const knexInstance = req.app.get('db')
     ShowsService.getAllShows(knexInstance)
       .then(shows => {
-        res.json(shows.map(serializeFolder))
+        res.json(shows.map(serializeShow))
       })
       .catch(next)
   })
@@ -64,7 +64,7 @@ showsRouter
       .catch(next)
   })
   .get((req, res, next) => {
-    res.json(serializeShow(res.folder))
+    res.json(serializeShow(res.show))
   })
   .delete((req, res, next) => {
     ShowsService.deleteShow(
