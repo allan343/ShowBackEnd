@@ -36,10 +36,8 @@ showsRouter
       newShow
     )
       .then(show => {
-        console.log(show)
         res
           .status(201)
-         // .location(`/folders/${folder.id}`)
           .json(serializeShow(show))
       })
       .catch(next)
