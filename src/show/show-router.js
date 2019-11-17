@@ -55,7 +55,7 @@ showsRouter
       .then(show => {
         if (!show) {
           return res.status(404).json({
-            error: { message: `Folder doesn't exist` }
+            error: { message: `Show doesn't exist` }
           })
         }
         res.show = show
@@ -78,11 +78,11 @@ showsRouter
   })
 
    .patch(jsonParser, (req, res, next) => {
-       const { showname } = req.body
-       const showToUpdate = { showname }
     
-
-       const numberOfValues = Object.values(showToUpdate).filter(Boolean).length
+    const newShow = req.body
+    newShow.id=req.params.show_id
+    const showToUpdate =  newShow.showname 
+    const numberOfValues = Object.values(showToUpdate).filter(Boolean).length
           if (numberOfValues === 0) {
             return res.status(400).json({
               error: {
@@ -93,8 +93,8 @@ showsRouter
     
        ShowsService.updateShow(
          req.app.get('db'),
-         req.params.show_id,
-         showToUpdate
+      newShow.id,
+         newShow
        )
          .then(numRowsAffected => {
            res.status(204).end()
