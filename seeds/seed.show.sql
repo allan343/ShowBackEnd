@@ -10,6 +10,9 @@ create table shows (
   seasons INTEGER,
   showDescription text,
   showLanguage text,
-  currentSeason INTEGER
+  currentSeason INTEGER,
+  toWatch boolean,
+  watching boolean,
+  finish boolean
 );
 

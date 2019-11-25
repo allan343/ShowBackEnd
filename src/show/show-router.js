@@ -28,9 +28,32 @@ showsRouter
       .catch(next)
   })
   .post(jsonParser, (req, res, next) => {
-   // const {  showname,startdate,finishdate, genre,seasons,showdescription,showlanguage,currentseason } = req.body
-    
-    const newShow = req.body
+   const {  showname,startdate,finishdate, genre,seasons,showdescription,showlanguage,currentseason } = req.body
+   let newShow = {
+    showname : showname,
+    startdate : startdate,
+    finishdate : finishdate,
+    genre: genre,
+    seasons: seasons,
+    showdescription:showdescription,
+    showlanguage:showlanguage,
+    currentseason: currentseason
+}
+console.log("beforestardate",newShow.startdate)
+
+    if(newShow.startdate=="")
+    {
+      newShow.startdate=null
+      console.log("stardate",newShow.startdate)
+    }
+
+    if(newShow.finishdate=="")
+    {
+      newShow.finishdate=null
+      console.log("fdate",newShow.finishdate)
+    }
+
+    //const newShow = req.body
     ShowsService.insertShow(
       req.app.get('db'),
       newShow
@@ -70,7 +93,7 @@ showsRouter
       req.params.show_id
     )
       .then(numRowsAffected => {
-        res.status(204).end()
+        res.status(204).json(serializeShow(show))
       })
       .catch(next)
   })
