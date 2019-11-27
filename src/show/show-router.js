@@ -100,9 +100,27 @@ showsRouter
 
    .patch(jsonParser, (req, res, next) => {
     
+    console.log("body",req.body)
+    
+
+
     const newShow = req.body
+    
     newShow.id=req.params.show_id
-    const showToUpdate =  newShow.showname 
+
+    if(newShow.startdate=="")
+    {
+      newShow.startdate=null
+      console.log("stardate",newShow.startdate)
+    }
+
+    if(newShow.finishdate=="")
+    {
+      newShow.finishdate=null
+      console.log("fdate",newShow.finishdate)
+    }
+    //const showToUpdate =  newShow.showname 
+    /*
     const numberOfValues = Object.values(showToUpdate).filter(Boolean).length
           if (numberOfValues === 0) {
             return res.status(400).json({
@@ -111,14 +129,14 @@ showsRouter
               }
             })
           }
-    
+    */
        ShowsService.updateShow(
          req.app.get('db'),
       newShow.id,
          newShow
        )
          .then(numRowsAffected => {
-           res.status(204).end()
+           res.status(200).json(serializeShow(newShow))
          })
          .catch(next)
       })
