@@ -39,6 +39,7 @@ showsRouter
     showlanguage:showlanguage,
     currentseason: currentseason
 }
+console.log("show",newShow)
 console.log("beforestardate",newShow.startdate)
 
     if(newShow.startdate=="")
