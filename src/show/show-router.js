@@ -7,14 +7,17 @@ const jsonParser = express.json()
 
 const serializeShow = show => ({
   id: show.id,
-  showname: show.name,
+  showname: show.showname,
   startdate: show.startdate,
   finishdate: show.finishdate,
   genre: show.genre,
   seasons: show.seasons,
   showdescription: show.showdescription,
-  showlanguage: show.language,
-  currentseason: show.currentseason
+  showlanguage: show.showlanguage,
+  currentseason: show.currentseason,
+  towatch: show.towatch,
+  watching: show.watching,
+  finish: show.finish
 })
 
 showsRouter
@@ -59,10 +62,10 @@ console.log("beforestardate",newShow.startdate)
       req.app.get('db'),
       newShow
     )
-      .then(show => {
+      .then(newShow => {
         res
           .status(201)
-          .json(serializeShow(show))
+          .json(serializeShow(newShow))
       })
       .catch(next)
   })
