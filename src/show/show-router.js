@@ -98,7 +98,7 @@ showsRouter
       req.params.show_id
     )
       .then(numRowsAffected => {
-        res.status(204).json(serializeShow(show))
+        res.status(200).json({numRowsAffected})
       })
       .catch(next)
   })
