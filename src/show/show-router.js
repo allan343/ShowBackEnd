@@ -31,7 +31,7 @@ showsRouter
       .catch(next)
   })
   .post(jsonParser, (req, res, next) => {
-   const {  showname,startdate,finishdate, genre,seasons,showdescription,showlanguage,currentseason } = req.body
+   /*const {  showname,startdate,finishdate, genre,seasons,showdescription,showlanguage,currentseason } = req.body
    let newShow = {
     showname : showname,
     startdate : startdate,
@@ -41,7 +41,8 @@ showsRouter
     showdescription:showdescription,
     showlanguage:showlanguage,
     currentseason: currentseason
-}
+}*/
+const newShow = req.body
 console.log("show",newShow)
 console.log("beforestardate",newShow.startdate)
 
@@ -109,7 +110,7 @@ showsRouter
 
 
     const newShow = req.body
-    
+    console.log("patch",newShow)
     newShow.id=req.params.show_id
 
     if(newShow.startdate=="")
@@ -140,9 +141,17 @@ showsRouter
          newShow
        )
          .then(numRowsAffected => {
-           res.status(200).json(serializeShow(newShow))
+         
+           ShowsService.getById( req.app.get('db'), newShow.id )
+            .then(show => { res.status(200).json(serializeShow(show)) })
+
+
+
          })
          .catch(next)
       })
+     
+
+
 
 module.exports = showsRouter
