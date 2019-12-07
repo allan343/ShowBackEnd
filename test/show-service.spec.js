@@ -7,8 +7,8 @@ describe(`Show List Service object`, function () {
     {
       id: 1,
       showname: 'Game of Thrones',
-      startdate: new Date('2029-01-22T16:28:32.615Z').toISOString(),
-      finishdate: new Date('2029-01-22T16:28:32.615Z').toISOString(),
+      startdate: null,
+      finishdate: null,
      seasons: 2,
       genre: 'Fantasy',
       showdescription: 'dragons and stuff',
@@ -21,8 +21,8 @@ describe(`Show List Service object`, function () {
     {
         id: 2,
         showname: 'BreakingBad',
-        startdate: new Date('2029-01-22T16:28:32.615Z').toISOString(),
-        finishdate: new Date('2029-01-22T16:28:32.615Z').toISOString(),
+        startdate: null,
+        finishdate: null,
        seasons: 2,
         genre: 'Crime drama',
         showdescription: 'Guy makes drugs',
@@ -68,9 +68,9 @@ describe(`Show List Service object`, function () {
       const secondItem = testItems[idToGet-1]
       return ShowService.getById(db, idToGet)
         .then(actual => {
-          expect(actual).to.eql({
+          expect(actual).to.eql(
            secondItem
-          })
+          )
         })
     })
 
@@ -116,8 +116,8 @@ describe(`Show List Service object`, function () {
     it(`insertItem() inserts an article and resolves the article with an 'id'`, () => {
       const newItem = {
         showname: 'Mad Men',
-        startdate: new Date('2029-01-22T16:28:32.615Z').toISOString(),
-        finishdate: new Date('2029-01-22T16:28:32.615Z').toISOString(),
+        startdate: null,
+        finishdate: null,
        seasons: 2,
         genre: 'drama',
         showdescription: 'Advertising stuff',
@@ -127,7 +127,7 @@ describe(`Show List Service object`, function () {
         finish: false,
         showlanguage: 'english'
       }
-      return ShoppingListService.insertShow(db, newItem)
+      return ShowService.insertShow(db, newItem)
         .then(actual => {
           expect(actual).to.eql({
             id: 1,
