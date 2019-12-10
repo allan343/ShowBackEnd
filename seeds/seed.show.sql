@@ -1,6 +1,4 @@
 drop table if exists shows;
-drop table if exists noteful_folders;
-drop table if exists noteful_notes;
 
 -- Create the table anew
 create table shows (
