@@ -68,7 +68,11 @@ console.log("beforestardate",newShow.startdate)
           .status(201)
           .json(serializeShow(newShow))
       })
-      .catch(next)
+      .catch((error)=>{
+        console.log(error)
+
+
+      })
   })
 
 showsRouter
