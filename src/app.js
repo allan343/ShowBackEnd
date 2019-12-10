@@ -3,7 +3,8 @@ const express = require('express')
 const morgan = require('morgan')
 const helmet = require('helmet')
 const cors = require('cors')
-const { NODE_ENV } = require('./config')
+const config = require('./config')
+const NODE_ENV= config.NODE_ENV
 const showroute = require('./show/show-router')
 //const noteroute = require('./notes/notes-router')
 
