@@ -1,5 +1,4 @@
 const express = require('express')
-//const xss = require('xss')
 const ShowsService = require('./show-service')
 
 const showsRouter = express.Router()
@@ -31,34 +30,20 @@ showsRouter
       .catch(next)
   })
   .post(jsonParser, (req, res, next) => {
-   /*const {  showname,startdate,finishdate, genre,seasons,showdescription,showlanguage,currentseason } = req.body
-   let newShow = {
-    showname : showname,
-    startdate : startdate,
-    finishdate : finishdate,
-    genre: genre,
-    seasons: seasons,
-    showdescription:showdescription,
-    showlanguage:showlanguage,
-    currentseason: currentseason
-}*/
-const newShow = req.body
-console.log("show",newShow)
-console.log("beforestardate",newShow.startdate)
 
-    if(newShow.startdate=="")
-    {
-      newShow.startdate=null
-      console.log("stardate",newShow.startdate)
+    const newShow = req.body
+
+
+    if (newShow.startdate == "") {
+      newShow.startdate = null
     }
 
-    if(newShow.finishdate=="")
-    {
-      newShow.finishdate=null
-      console.log("fdate",newShow.finishdate)
+    if (newShow.finishdate == "") {
+      newShow.finishdate = null
+
     }
 
-    //const newShow = req.body
+
     ShowsService.insertShow(
       req.app.get('db'),
       newShow
@@ -68,9 +53,7 @@ console.log("beforestardate",newShow.startdate)
           .status(201)
           .json(serializeShow(newShow))
       })
-      .catch((error)=>{
-        console.log(error)
-
+      .catch((error) => {
 
       })
   })
@@ -102,60 +85,40 @@ showsRouter
       req.params.show_id
     )
       .then(numRowsAffected => {
-        res.status(200).json({numRowsAffected})
+        res.status(200).json({ numRowsAffected })
       })
       .catch(next)
   })
 
-   .patch(jsonParser, (req, res, next) => {
-    
-    console.log("body",req.body)
-    
-
+  .patch(jsonParser, (req, res, next) => {
 
     const newShow = req.body
-    console.log("patch",newShow)
-    newShow.id=req.params.show_id
+  
+    newShow.id = req.params.show_id
 
-    if(newShow.startdate=="")
-    {
-      newShow.startdate=null
-      console.log("stardate",newShow.startdate)
+    if (newShow.startdate == "") {
+      newShow.startdate = null
+      
     }
 
-    if(newShow.finishdate=="")
-    {
-      newShow.finishdate=null
-      console.log("fdate",newShow.finishdate)
+    if (newShow.finishdate == "") {
+      newShow.finishdate = null
+      
     }
-    //const showToUpdate =  newShow.showname 
-    /*
-    const numberOfValues = Object.values(showToUpdate).filter(Boolean).length
-          if (numberOfValues === 0) {
-            return res.status(400).json({
-              error: {
-                message: `Request body must contain either 'title', 'style' or 'content'`
-              }
-            })
-          }
-    */
-       ShowsService.updateShow(
-         req.app.get('db'),
+
+    ShowsService.updateShow(
+      req.app.get('db'),
       newShow.id,
-         newShow
-       )
-         .then(numRowsAffected => {
-         
-           ShowsService.getById( req.app.get('db'), newShow.id )
-            .then(show => { res.status(200).json(serializeShow(show)) })
+      newShow
+    )
+      .then(numRowsAffected => {
 
+        ShowsService.getById(req.app.get('db'), newShow.id)
+          .then(show => { res.status(200).json(serializeShow(show)) })
 
-
-         })
-         .catch(next)
       })
-     
-
+      .catch(next)
+  })
 
 
 module.exports = showsRouter
