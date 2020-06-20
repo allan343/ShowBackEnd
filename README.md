@@ -15,7 +15,7 @@ ShowApp requires Node.js v6.0+ to run. Install the dependencies and devDependenc
 Start the application `npm start`
 
 
-Run the tests `npm test`
+Run the tests `npm t`
 
 ##  Schema
 
