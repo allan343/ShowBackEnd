@@ -48,7 +48,7 @@ describe(`Show List Service object`, function () {
 
   after(() => db.destroy())
 
-  context(`Given 'shopping_list' has data`, () => {
+  context(`Given 'shows' has data`, () => {
     beforeEach(() => {
       return db
         .into('shows')
@@ -79,7 +79,7 @@ describe(`Show List Service object`, function () {
       return ShowService.deleteShow(db, showId)
         .then(() => ShowService.getAllShows(db))
         .then(allItems => {
-          // copy the test items array without the removed article
+          // copy the test items array without the removed item
           const expected = testItems
             .filter(show => show.id !== showId)
           expect(allItems).to.eql(expected)
@@ -105,7 +105,7 @@ describe(`Show List Service object`, function () {
     })
   })
 
-  context(`Given 'show' has no data`, () => {
+  context(`Given 'shows' has no data`, () => {
     it(`getAllItems() resolves an empty array`, () => {
       return ShowService.getAllShows(db)
         .then(actual => {
