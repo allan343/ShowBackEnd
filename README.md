@@ -1,26 +1,188 @@
-# Express Boilerplate!
+# ShowApp
 
-This is a boilerplate project used for starting new projects!
+ShowApp is an application where user can keep track of shows they are planning to watch, watching, and have finished watching
 
-## Set up
+## Prerequisites
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+Buvie requires Node.js v6.0+ to run.
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+Buvie requires Node.js v6.0+ to run. Install the dependencies and devDependencies and start the server.
 
-## Scripts
+```npm install ```
+
+## Starting the server
 
 Start the application `npm start`
 
-Start nodemon for the application `npm run dev`
 
 Run the tests `npm test`
 
-## Deploying
+##  Schema
 
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+Show
+
+```
+show => ({
+  id: show.id,
+  showname: show.showname,
+  startdate: show.startdate,
+  finishdate: show.finishdate,
+  genre: show.genre,
+  seasons: show.seasons,
+  showdescription: show.showdescription,
+  showlanguage: show.showlanguage,
+  currentseason: show.currentseason,
+  towatch: show.towatch,
+  watching: show.watching,
+  finish: show.finish
+})
+```
+
+##  API OVERVIEW
+
+##  GET /api/shows/
+```
+// req.query
+{
+  ?
+}
+
+// res.body
+[
+  {
+    {
+  id: show.id,
+  showname: show.showname,
+  startdate: show.startdate,
+  finishdate: show.finishdate,
+  genre: show.genre,
+  seasons: show.seasons,
+  showdescription: show.showdescription,
+  showlanguage: show.showlanguage,
+  currentseason: show.currentseason,
+  towatch: show.towatch,
+  watching: show.watching,
+  finish: show.finish
+}
+  }
+]
+```
+
+##  POST /api/shows/
+```
+// req.query
+ {
+  id: show.id,
+  showname: show.showname,
+  startdate: show.startdate,
+  finishdate: show.finishdate,
+  genre: show.genre,
+  seasons: show.seasons,
+  showdescription: show.showdescription,
+  showlanguage: show.showlanguage,
+  currentseason: show.currentseason,
+  towatch: show.towatch,
+  watching: show.watching,
+  finish: show.finish
+}
+
+// res.body
+[
+  {
+    {
+  id: show.id,
+  showname: show.showname,
+  startdate: show.startdate,
+  finishdate: show.finishdate,
+  genre: show.genre,
+  seasons: show.seasons,
+  showdescription: show.showdescription,
+  showlanguage: show.showlanguage,
+  currentseason: show.currentseason,
+  towatch: show.towatch,
+  watching: show.watching,
+  finish: show.finish
+}
+  }
+]
+```
+
+##  GET /api/shows/:show_id
+```
+// req.query
+{
+  show_id
+}
+
+// res.body
+[
+  {
+    {
+  id: show.id,
+  showname: show.showname,
+  startdate: show.startdate,
+  finishdate: show.finishdate,
+  genre: show.genre,
+  seasons: show.seasons,
+  showdescription: show.showdescription,
+  showlanguage: show.showlanguage,
+  currentseason: show.currentseason,
+  towatch: show.towatch,
+  watching: show.watching,
+  finish: show.finish
+}
+  }
+]
+```
+
+##  DELETE /api/shows/:show_id
+```
+// req.query
+{
+  show_id
+}
+
+// res.body
+[
+  {
+    {
+    row_deleted    
+    }
+  }
+]
+```
+
+##  PATCH /api/shows/:show_id
+```
+// req.query
+{
+  show_id
+}
+
+// res.body
+[
+  {
+    {
+  id: show.id,
+  showname: show.showname,
+  startdate: show.startdate,
+  finishdate: show.finishdate,
+  genre: show.genre,
+  seasons: show.seasons,
+  showdescription: show.showdescription,
+  showlanguage: show.showlanguage,
+  currentseason: show.currentseason,
+  towatch: show.towatch,
+  watching: show.watching,
+  finish: show.finish
+}
+  }
+]
+```
+# Built with
+
+Node, Express, Mocha, Chai
+
+# Authors
+
+Allan Cheng
