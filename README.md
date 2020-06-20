@@ -48,7 +48,7 @@ show => ({
 }
 
 // res.body
-[
+
   {
     {
   id: show.id,
@@ -65,7 +65,7 @@ show => ({
   finish: show.finish
 }
   }
-]
+
 ```
 
 ##  POST /api/shows/
@@ -87,7 +87,7 @@ show => ({
 }
 
 // res.body
-[
+
   {
     {
   id: show.id,
@@ -104,7 +104,7 @@ show => ({
   finish: show.finish
 }
   }
-]
+
 ```
 
 ##  GET /api/shows/:show_id
@@ -160,7 +160,7 @@ show => ({
 }
 
 // res.body
-[
+
   {
     {
   id: show.id,
@@ -177,7 +177,7 @@ show => ({
   finish: show.finish
 }
   }
-]
+
 ```
 # Built with
 
