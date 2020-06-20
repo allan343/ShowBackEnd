@@ -4,9 +4,9 @@ ShowApp is an application where user can keep track of shows they are planning t
 
 ## Prerequisites
 
-Buvie requires Node.js v6.0+ to run.
+ShowApp requires Node.js v6.0+ to run.
 
-Buvie requires Node.js v6.0+ to run. Install the dependencies and devDependencies and start the server.
+ShowApp requires Node.js v6.0+ to run. Install the dependencies and devDependencies and start the server.
 
 ```npm install ```
 
