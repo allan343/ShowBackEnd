@@ -89,7 +89,7 @@ show => ({
 ```
 // req.query
 {
-  ?
+  none expected
 }
 
 // res.body
