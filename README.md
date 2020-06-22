@@ -1,6 +1,6 @@
 Name of app: ShowApp
 
-Link to app: https://show.allanhfcheng.now.sh
+Link to app: https://bookmarks-app.allanhfcheng.now.sh/
 
 Description of App:
 
