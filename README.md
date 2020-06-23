@@ -37,7 +37,7 @@ You now have the show listed under the state you set it to (To Watch, Watching F
 Click on a show to enter show Information page
 ![](imagesForReadMe/ShowInformation.PNG)
 
-On the same page as the previous step (Informatin page) click on "Update" or "Edit"
+On the same page as the previous step (Information page) click on "Update" or "Edit"
 Update allows you to change state of show.
 Edit allows you to edit show details
 ![](imagesForReadMe/UpdateDetails.PNG)
