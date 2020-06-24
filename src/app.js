@@ -1,36 +1,28 @@
-require('dotenv').config()
-const express = require('express')
-const morgan = require('morgan')
-const helmet = require('helmet')
-const cors = require('cors')
-const config = require('./config')
-const NODE_ENV= config.NODE_ENV
-const showroute = require('./show/show-router')
-
-
-
-const app = express()
-
+require('dotenv').config();
+const express = require('express');
+const morgan = require('morgan');
+const helmet = require('helmet');
+const cors = require('cors');
+const config = require('./config');
+const NODE_ENV = config.NODE_ENV;
+const showroute = require('./show/show-router');
+const app = express();
 const morganOption = (NODE_ENV === 'production')
   ? 'tiny'
   : 'common';
 
-app.use(morgan(morganOption))
-app.use(helmet())
-app.use(cors())
-app.use('/shows',showroute)
+app.use(morgan(morganOption));
+app.use(helmet());
+app.use(cors());
+app.use('/shows', showroute);
 
 app.get('/', (req, res) => {
-       res.send('Hello, world!')
-     })
-    
+  res.send('Hello, world!');
+})
 
-     app.use(function errorHandler(error, req, res, next) {
-           let response
-          
-           res.status(500).json(response)
-         })
+app.use(function errorHandler(error, req, res, next) {
+  let response;
+  res.status(500).json(response);
+})
 
-
-
-module.exports = app
+module.exports = app;

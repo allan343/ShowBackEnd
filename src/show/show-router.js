@@ -1,8 +1,7 @@
-const express = require('express')
-const ShowsService = require('./show-service')
-
-const showsRouter = express.Router()
-const jsonParser = express.json()
+const express = require('express');
+const ShowsService = require('./show-service');
+const showsRouter = express.Router();
+const jsonParser = express.json();
 
 const serializeShow = show => ({
   id: show.id,
@@ -22,27 +21,26 @@ const serializeShow = show => ({
 showsRouter
   .route('/')
   .get((req, res, next) => {
-    const knexInstance = req.app.get('db')
+    const knexInstance = req.app.get('db');
     ShowsService.getAllShows(knexInstance)
       .then(shows => {
-        res.json(shows.map(serializeShow))
+        res.json(shows.map(serializeShow));
       })
-      .catch(next)
+      .catch(next);
   })
   .post(jsonParser, (req, res, next) => {
 
-    const newShow = req.body
+    const newShow = req.body;
 
 
     if (newShow.startdate == "") {
-      newShow.startdate = null
+      newShow.startdate = null;
     }
 
     if (newShow.finishdate == "") {
-      newShow.finishdate = null
+      newShow.finishdate = null;
 
     }
-
 
     ShowsService.insertShow(
       req.app.get('db'),
@@ -51,7 +49,7 @@ showsRouter
       .then(newShow => {
         res
           .status(201)
-          .json(serializeShow(newShow))
+          .json(serializeShow(newShow));
       })
       .catch((error) => {
 
@@ -71,7 +69,7 @@ showsRouter
             error: { message: `Show doesn't exist` }
           })
         }
-        res.show = show
+        res.show = show;
         next()
       })
       .catch(next)
@@ -92,18 +90,16 @@ showsRouter
 
   .patch(jsonParser, (req, res, next) => {
 
-    const newShow = req.body
-  
-    newShow.id = req.params.show_id
+    const newShow = req.body;
+    newShow.id = req.params.show_id;
 
     if (newShow.startdate == "") {
-      newShow.startdate = null
-      
+      newShow.startdate = null;
     }
 
     if (newShow.finishdate == "") {
-      newShow.finishdate = null
-      
+      newShow.finishdate = null;
+
     }
 
     ShowsService.updateShow(
@@ -120,5 +116,4 @@ showsRouter
       .catch(next)
   })
 
-
-module.exports = showsRouter
+module.exports = showsRouter;

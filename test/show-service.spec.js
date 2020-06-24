@@ -1,15 +1,15 @@
-const ShowService = require('../src/show/show-service')
-const knex = require('knex')
+const ShowService = require('../src/show/show-service');
+const knex = require('knex');
 
 describe(`Show List Service object`, function () {
-  let db
+  let db;
   let testItems = [
     {
       id: 1,
       showname: 'Game of Thrones',
       startdate: null,
       finishdate: null,
-     seasons: 2,
+      seasons: 2,
       genre: 'Fantasy',
       showdescription: 'dragons and stuff',
       currentseason: 2,
@@ -19,20 +19,20 @@ describe(`Show List Service object`, function () {
       showlanguage: 'english'
     },
     {
-        id: 2,
-        showname: 'BreakingBad',
-        startdate: null,
-        finishdate: null,
-       seasons: 2,
-        genre: 'Crime drama',
-        showdescription: 'Guy makes drugs',
-        currentseason: 2,
-        towatch: false,
-        watching: true,
-        finish: false,
-        showlanguage: 'english'
-      },
-      
+      id: 2,
+      showname: 'BreakingBad',
+      startdate: null,
+      finishdate: null,
+      seasons: 2,
+      genre: 'Crime drama',
+      showdescription: 'Guy makes drugs',
+      currentseason: 2,
+      towatch: false,
+      watching: true,
+      finish: false,
+      showlanguage: 'english'
+    },
+
   ]
 
   before(() => {
@@ -42,11 +42,11 @@ describe(`Show List Service object`, function () {
     })
   })
 
-  before(() => db('shows').truncate())
+  before(() => db('shows').truncate());
 
-  afterEach(() => db('shows').truncate())
+  afterEach(() => db('shows').truncate());
 
-  after(() => db.destroy())
+  after(() => db.destroy());
 
   context(`Given 'shows' has data`, () => {
     beforeEach(() => {
@@ -56,7 +56,7 @@ describe(`Show List Service object`, function () {
     })
 
     it(`getAllItems() resolves all items from 'shows' table`, () => {
-   
+
       return ShowService.getAllShows(db)
         .then(actual => {
           expect(actual).to.eql(testItems)
@@ -64,17 +64,17 @@ describe(`Show List Service object`, function () {
     })
 
     it(`getById() resolves an article by id from 'shopping_list' table`, () => {
-      const idToGet = 2
-      const secondItem = testItems[idToGet-1]
+      const idToGet = 2;
+      const secondItem = testItems[idToGet - 1];
       return ShowService.getById(db, idToGet)
         .then(actual => {
           expect(actual).to.eql(
-           secondItem
+            secondItem
           )
         })
     })
 
-    it(`deleteItem() removes an show by id from 'show' table`, () => {
+    it(`deleteItem() removes an show ;by id from 'show' table`, () => {
       const showId = 1
       return ShowService.deleteShow(db, showId)
         .then(() => ShowService.getAllShows(db))
@@ -87,12 +87,12 @@ describe(`Show List Service object`, function () {
     })
 
     it(`updateItem() updates an show from the 'show' table`, () => {
-      const idOfItemToUpdate = 1
+      const idOfItemToUpdate = 1;
       const newItemData = {
         showname: 'A Song Of Ice and Fire',
-       
+
       }
-      const originalItem = testItems[idOfItemToUpdate - 1]
+      const originalItem = testItems[idOfItemToUpdate - 1];
       return ShowService.updateShow(db, idOfItemToUpdate, newItemData)
         .then(() => ShowService.getById(db, idOfItemToUpdate))
         .then(show => {
@@ -118,7 +118,7 @@ describe(`Show List Service object`, function () {
         showname: 'Mad Men',
         startdate: null,
         finishdate: null,
-       seasons: 2,
+        seasons: 2,
         genre: 'drama',
         showdescription: 'Advertising stuff',
         currentseason: 2,

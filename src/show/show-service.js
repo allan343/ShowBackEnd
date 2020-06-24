@@ -1,6 +1,6 @@
 const ShowsService = {
   getAllShows(knex) {
-    return knex.select('*').from('shows')
+    return knex.select('*').from('shows');
   },
   insertShow(knex, newShow) {
     return knex
@@ -8,11 +8,11 @@ const ShowsService = {
       .into('shows')
       .returning('*')
       .then(rows => {
-        return rows[0]
+        return rows[0];
       })
   },
   getById(knex, id) {
-    return knex.from('shows').select('*').where('id', id).first()
+    return knex.from('shows').select('*').where('id', id).first();
   },
   deleteShow(knex, id) {
     return knex('shows')
@@ -26,4 +26,4 @@ const ShowsService = {
   },
 }
 
-module.exports = ShowsService
+module.exports = ShowsService;
