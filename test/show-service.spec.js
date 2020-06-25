@@ -52,14 +52,14 @@ describe(`Show List Service object`, function () {
     beforeEach(() => {
       return db
         .into('shows')
-        .insert(testItems)
+        .insert(testItems);
     })
 
     it(`getAllItems() resolves all items from 'shows' table`, () => {
 
       return ShowService.getAllShows(db)
         .then(actual => {
-          expect(actual).to.eql(testItems)
+          expect(actual).to.eql(testItems);
         })
     })
 
@@ -70,7 +70,7 @@ describe(`Show List Service object`, function () {
         .then(actual => {
           expect(actual).to.eql(
             secondItem
-          )
+          );
         })
     })
 
@@ -82,7 +82,7 @@ describe(`Show List Service object`, function () {
           // copy the test items array without the removed item
           const expected = testItems
             .filter(show => show.id !== showId)
-          expect(allItems).to.eql(expected)
+          expect(allItems).to.eql(expected);
         })
     })
 
@@ -90,7 +90,6 @@ describe(`Show List Service object`, function () {
       const idOfItemToUpdate = 1;
       const newItemData = {
         showname: 'A Song Of Ice and Fire',
-
       }
       const originalItem = testItems[idOfItemToUpdate - 1];
       return ShowService.updateShow(db, idOfItemToUpdate, newItemData)
@@ -100,7 +99,7 @@ describe(`Show List Service object`, function () {
             id: idOfItemToUpdate,
             ...originalItem,
             ...newItemData,
-          })
+          });
         })
     })
   })
@@ -109,7 +108,7 @@ describe(`Show List Service object`, function () {
     it(`getAllItems() resolves an empty array`, () => {
       return ShowService.getAllShows(db)
         .then(actual => {
-          expect(actual).to.eql([])
+          expect(actual).to.eql([]);
         })
     })
 
@@ -126,13 +125,13 @@ describe(`Show List Service object`, function () {
         watching: true,
         finish: false,
         showlanguage: 'english'
-      }
+      };
       return ShowService.insertShow(db, newItem)
         .then(actual => {
           expect(actual).to.eql({
             id: 1,
             ...newItem
-          })
+          });
         })
     })
   })

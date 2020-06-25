@@ -17,12 +17,12 @@ const ShowsService = {
   deleteShow(knex, id) {
     return knex('shows')
       .where({ id })
-      .delete()
+      .delete();
   },
   updateShow(knex, id, newShow) {
     return knex('shows')
       .where({ id })
-      .update(newShow)
+      .update(newShow);
   },
 }
 

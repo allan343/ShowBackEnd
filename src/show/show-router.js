@@ -32,14 +32,12 @@ showsRouter
 
     const newShow = req.body;
 
-
     if (newShow.startdate == "") {
       newShow.startdate = null;
     }
 
     if (newShow.finishdate == "") {
       newShow.finishdate = null;
-
     }
 
     ShowsService.insertShow(
@@ -70,12 +68,12 @@ showsRouter
           })
         }
         res.show = show;
-        next()
+        next();
       })
-      .catch(next)
+      .catch(next);
   })
   .get((req, res, next) => {
-    res.json(serializeShow(res.show))
+    res.json(serializeShow(res.show));
   })
   .delete((req, res, next) => {
     ShowsService.deleteShow(
@@ -83,9 +81,9 @@ showsRouter
       req.params.show_id
     )
       .then(numRowsAffected => {
-        res.status(200).json({ numRowsAffected })
+        res.status(200).json({ numRowsAffected });
       })
-      .catch(next)
+      .catch(next);
   })
 
   .patch(jsonParser, (req, res, next) => {
@@ -99,7 +97,6 @@ showsRouter
 
     if (newShow.finishdate == "") {
       newShow.finishdate = null;
-
     }
 
     ShowsService.updateShow(
@@ -110,10 +107,10 @@ showsRouter
       .then(numRowsAffected => {
 
         ShowsService.getById(req.app.get('db'), newShow.id)
-          .then(show => { res.status(200).json(serializeShow(show)) })
+          .then(show => { res.status(200).json(serializeShow(show)) });
 
       })
-      .catch(next)
+      .catch(next);
   })
 
 module.exports = showsRouter;
