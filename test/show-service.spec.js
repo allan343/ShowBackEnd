@@ -39,7 +39,7 @@ describe(`Show List Service object`, function () {
     db = knex({
       client: 'pg',
       connection: process.env.TEST_DATABASE_URL,
-    })
+    });
   })
 
   before(() => db('shows').truncate());
@@ -75,13 +75,13 @@ describe(`Show List Service object`, function () {
     })
 
     it(`deleteItem() removes an show ;by id from 'show' table`, () => {
-      const showId = 1
+      const showId = 1;
       return ShowService.deleteShow(db, showId)
         .then(() => ShowService.getAllShows(db))
         .then(allItems => {
           // copy the test items array without the removed item
           const expected = testItems
-            .filter(show => show.id !== showId)
+            .filter(show => show.id !== showId);
           expect(allItems).to.eql(expected);
         })
     })
@@ -90,7 +90,7 @@ describe(`Show List Service object`, function () {
       const idOfItemToUpdate = 1;
       const newItemData = {
         showname: 'A Song Of Ice and Fire',
-      }
+      };
       const originalItem = testItems[idOfItemToUpdate - 1];
       return ShowService.updateShow(db, idOfItemToUpdate, newItemData)
         .then(() => ShowService.getById(db, idOfItemToUpdate))

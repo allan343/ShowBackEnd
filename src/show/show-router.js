@@ -16,7 +16,7 @@ const serializeShow = show => ({
   towatch: show.towatch,
   watching: show.watching,
   finish: show.finish
-})
+});
 
 showsRouter
   .route('/')
@@ -51,7 +51,7 @@ showsRouter
       })
       .catch((error) => {
 
-      })
+      });
   })
 
 showsRouter
