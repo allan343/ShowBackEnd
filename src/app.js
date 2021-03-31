@@ -17,7 +17,7 @@ app.use(cors());
 app.use('/shows', showroute);
 
 app.get('/', (req, res) => {
-  res.send('Hello, world!');
+  res.send('Hello, world! Hi!');
 })
 
 app.use(function errorHandler(error, req, res, next) {
