@@ -26,7 +26,11 @@ showsRouter
       .then(shows => {
         res.json(shows.map(serializeShow));
       })
-      .catch(next);
+      .catch((err)=>{
+
+        console.log(err);
+        next();
+      });
   })
   .post(jsonParser, (req, res, next) => {
 
